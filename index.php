@@ -26,14 +26,20 @@
 
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="3000">
+            <div class="carousel-item active" data-bs-interval="2000">
                 <img src="./images/1.jpg" class="d-block w-100" alt="..." height="500">
             </div>
-            <div class="carousel-item" data-bs-interval="3000">
+            <div class="carousel-item" data-bs-interval="2000">
                 <img src="./images/2.jpg" class="d-block w-100" alt="..." height="500">
             </div>
-            <div class="carousel-item" data-bs-interval="3000">
+            <div class="carousel-item" data-bs-interval="2000">
                 <img src="./images/3.jpg" class="d-block w-100" alt="..." height="500">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="./images/4.jpg" class="d-block w-100" alt="..." height="500">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="./images/5.jpg" class="d-block w-100" alt="..." height="500">
             </div>
         </div>
         <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -47,14 +53,14 @@
     </div>
 
     <!-- caurseal end here -->
-    <div class="container text-center">
+    <div class="container text-center my-3">
         <h2>DiscussKro- Categories</h2>
         <div class="row">
 
             <!-- for loop dwara iterate krenge -->
             <?php
 
-$imgarray=array("python.png","js.jpg","php.png");
+$imgarray=array("python.png","js.jpg","php.png","cpp.avif","node-js.png","java.webp");
 $i=0;
 
 $sql="SELECT * FROM `category`";
@@ -64,7 +70,7 @@ while($row=mysqli_fetch_assoc($result))
     $col= $row['category_name'];
     $col_desc=$row['category_description'];
 echo 
-    '<div class="col-md-4 my-2">
+    '<div class="col-md-4 my-3">
     <div class="card" style="width: 18rem;">
   <img src="./images/'.$imgarray[$i].'" class="card-img-top" alt="..." height="250">
   <div class="card-body">

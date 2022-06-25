@@ -4,12 +4,13 @@
 }
 
 body{
-    background-color: rgb(249, 237, 222);
+    background-color: rgb(32, 3, 50);
+    color: beige;
 }
-/* .modal-content{
-background-color: rgb(245, 243, 204);
+.modal-content{
+background-color: rgb(247, 245, 216);
 }
-.modal-title{
+/* .modal-title{
     align-items: center;
     text-align: center;
 } */
