@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-        <!-- bootstrap css link -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-            <!-- css link -->
+    <!-- bootstrap css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- css link -->
     <link rel="stylesheet" href="./styles/style.css">
 
     <title>DiscussKro-Coding Forum</title>
@@ -53,10 +53,10 @@
     </div>
 
     <!-- caurseal end here -->
-    <div class="container text-center my-3">
+    <div class="container text-center my-3 ">
         <h2>DiscussKro- Categories</h2>
-        <div class="row">
 
+        <div class="row">
             <!-- for loop dwara iterate krenge -->
             <?php
 
@@ -66,17 +66,17 @@ $i=0;
 $sql="SELECT * FROM `category`";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_assoc($result))
-{
+{   $id=$row['category_id'];
     $col= $row['category_name'];
     $col_desc=$row['category_description'];
 echo 
-    '<div class="col-md-4 my-3">
+    '<div class="my-3 col-md-4">
     <div class="card" style="width: 18rem;">
   <img src="./images/'.$imgarray[$i].'" class="card-img-top" alt="..." height="250">
   <div class="card-body">
     <h5 class="card-title">'. $col .'</h5>
     <p class="card-text">'. substr($col_desc,0,50) .'....'.'</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="threads.php?catid='. $id.'" class="btn btn-primary">View Threads</a>
   </div>
 </div>
     </div>';
@@ -91,7 +91,7 @@ echo
 
 
     </div>
-
+    </div>
     <!-- bootstrap js link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
