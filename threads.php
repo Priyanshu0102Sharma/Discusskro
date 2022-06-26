@@ -13,24 +13,17 @@
     <!-- navbar start -->
     <?php require "partials/header.php" ?>
     <!-- navbar ends -->
+
+    <!-- database connect here -->
     <?php require "partials/_dbconnect.php" ?>
 
 
 
-
-
-
-
-
-
-    <!-- division for jumbotron like structure-->
+    <!-- jumbotron used for displaying the categroy informantion-->
 
     <div class="container mt-3">
 
-
-
         <?php
-
 
 $id=$_GET['catid'];
 $sql="SELECT * FROM `category` WHERE `category_id`='$id'";
@@ -48,9 +41,9 @@ while($row=mysqli_fetch_assoc($result))
         </div>
     </div>
 
+<!-- category information ended -->
 
     <!-- form for asking question start here-->
-
     <div class="container">
 
         <h1 class="text-center my-3">Start the Discussion :p</h1>
@@ -64,20 +57,41 @@ while($row=mysqli_fetch_assoc($result))
                 <label for="exampleFormControlTextarea1" class="form-label">Elaborate your Problem</label>
                 <textarea class="form-control" id="description" name="description" rows="5"></textarea>
             </div>
-
-
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
     </div>
     <!-- form for asking question ends here -->
 
-
+<!-- questions/threads asked by users start here -->
     <div class="container my-3">
         <h3 class="text-center">Browse Question</h3>
 
-        <!-- media my-2 objects -->
 
-        <?php
+
+
+
+<!-- adding question/threads by users into database start here-->
+<?php 
+$method=$_SERVER['REQUEST_METHOD'];
+$insertion=false;
+if($method=='POST')
+{
+  $th_title=$_POST['title'];
+  $th_desc=$_POST['description'];
+  $sql="INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";
+  $result=mysqli_query($conn,$sql);
+
+
+}
+
+?>
+<!-- adding questions/threads by user ends here -->
+
+
+
+        <!-- media objects -->
+
+<?php
 
 $id=$_GET['catid'];
 $sql="SELECT * FROM `threads` WHERE `thread_cat_id`='$id'";
@@ -108,24 +122,10 @@ else{
   echo '<p class="text-center"><b>Be the first one to ask the question</b></p>';
 }
  ?>
+<!-- questions/threads asked by the users end here -->
 
 
 
-<!-- adding question into database -->
-<?php 
-$method=$_SERVER['REQUEST_METHOD'];
-$insertion=false;
-if($method=='POST')
-{
-  $th_title=$_POST['title'];
-  $th_desc=$_POST['description'];
-  $sql="INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";
-  $result=mysqli_query($conn,$sql);
-
-
-}
-
-?>
 
 
 
