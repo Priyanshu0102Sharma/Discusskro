@@ -47,4 +47,19 @@ echo
 
 require "_signupmodal.php";
 include "_loginmodal.php";
+
+if($_GET['signupsuccess']&&$_GET['signupsuccess']=="true")
+{
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> You can now login!!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+if($_GET['signupsuccess']&&$_GET['signupsuccess']=="false")
+{
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Failure!</strong> You were not able to signup because either you have taken repeated email id or password didn\'t match !!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
 ?>
