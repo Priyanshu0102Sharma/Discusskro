@@ -90,7 +90,7 @@ while($row=mysqli_fetch_assoc($result))
     $title=$row['thread_title'];
     $desc=$row['thread_desc'];
     $date=$row['timestamp'];
-}
+
 
   echo '<div class="d-flex">
     <div class="flex-shrink-0">
@@ -102,6 +102,8 @@ while($row=mysqli_fetch_assoc($result))
     </div>
 </div>';
 }
+}
+
 else{
   echo '<p class="text-center"><b>Be the first one to ask the question</b></p>';
 }
@@ -112,13 +114,15 @@ else{
 <!-- adding question into database -->
 <?php 
 $method=$_SERVER['REQUEST_METHOD'];
-
+$insertion=false;
 if($method=='POST')
 {
   $th_title=$_POST['title'];
   $th_desc=$_POST['description'];
   $sql="INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";
   $result=mysqli_query($conn,$sql);
+
+
 }
 
 ?>
