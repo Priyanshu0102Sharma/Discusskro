@@ -43,7 +43,7 @@ echo
       session_start();
       if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
       echo' <p class="text-light my-0 mx-2">';echo "Welcome". $_SESSION['useremail']; echo '</p>'; 
-       echo ' <button class="btn btn-outline-warning">Logout</button>';
+       echo ' <a href="partials/_logouthandling.php" class="btn btn-outline-warning">Logout</a>';
       }
       else{
     
