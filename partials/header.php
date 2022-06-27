@@ -1,5 +1,7 @@
 <?php
 
+
+
 echo 
 '<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
@@ -36,26 +38,40 @@ echo
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-success " type="submit">Search</button>
-      </form>
-      <div class="loginbtns">
+      </form>';
+
+      session_start();
+      if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
+      echo' <p class="text-light my-0 mx-2">';echo "Welcome". $_SESSION['useremail']; echo '</p>'; 
+       echo ' <button class="btn btn-outline-warning">Logout</button>';
+      }
+      else{
+    
+
+      echo'<div class="loginbtns">
         <button class="btn btn-outline-warning mx-2 " data-bs-toggle="modal" data-bs-target="#loginModal" >Login</button>
-        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signupModal" >SignUp</button>
+        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signupModal" >SignUp</button>';
+      }
+      echo '
       </div>
     </div>
   </div>
-</nav>';
+  
+    
+  </nav>';
+      
 
 require "_signupmodal.php";
 include "_loginmodal.php";
 
-if($_GET['signupsuccess']&&$_GET['signupsuccess']=="true")
+if($_GET['signupsuccess'] && $_GET ['signupsuccess']=="true")
 {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong> You can now login!!
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 }
-if($_GET['signupsuccess']&&$_GET['signupsuccess']=="false")
+if($_GET['signupsuccess'] && $_GET['signupsuccess']=="false")
 {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>Failure!</strong> You were not able to signup because either you have taken repeated email id or password didn\'t match !!
