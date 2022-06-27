@@ -6,8 +6,9 @@ if($method=="POST")
 {
         require '_dbconnect.php';
         $email=$_POST['email'];
+        $username=$_POST['username'];
         $pass=$_POST['password'];
-        $sql="select * from users where user_email='$email'";
+        $sql="select * from users where username='$username'";
         $result=mysqli_query($conn, $sql);
         $numrows=mysqli_num_rows($result);
         if($numrows==1)
@@ -18,7 +19,7 @@ if($method=="POST")
                 session_start();
             //   echo var_dump(password_verify($pass,$row['user_password']));
                 $_SESSION['loggedin']=true;
-                $_SESSION['useremail']=$email;
+                $_SESSION['username']=$username;
                 header("Location: /forum/index.php");
                 // exit;
             }

@@ -10,7 +10,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <!-- css link -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
 
     <title>DiscussKro-Coding Forum</title>
 
@@ -56,7 +56,7 @@
     <div class="container text-center my-3 ">
         <h2>DiscussKro- Categories</h2>
 
-        <div class="row">
+        <div class="r1">
             <!-- for loop dwara iterate krenge -->
             <?php
 
@@ -70,7 +70,7 @@ while($row=mysqli_fetch_assoc($result))
     $col= $row['category_name'];
     $col_desc=$row['category_description'];
 echo 
-    '<div class="my-3 col-md-4">
+    '<div class="coln">
     <div class="card" style="width: 18rem;">
   <img src="./images/'.$imgarray[$i].'" class="card-img-top" alt="..." height="250">
   <div class="card-body">

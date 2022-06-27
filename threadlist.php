@@ -12,12 +12,13 @@
     <!-- navbar ends -->
     <?php require "partials/_dbconnect.php" ?>
 
+    <!-- division for jumbotron like structure-->
+    
+    <div class="container mt-3">
+      
+      <?php
+      if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
 
-<!-- division for jumbotron like structure-->
-
-<div class="container mt-3">
-
-<?php
 
 $id=$_GET['cat_id'];
 $sql="SELECT * FROM `threads` WHERE `thread_id`='$id'";
@@ -100,6 +101,21 @@ while($row=mysqli_fetch_assoc($result))
 else{
   echo '<p class="text-center"><b>Be the first one to answer the question</b></p>';
 }
+      }
+      else
+      {echo'
+        <div class="container mt-3">
+  <h2>You are not logged in!!</h2>
+  <div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>Log in to see the solution</h1> 
+    <p>It seems you are not logged in. Log in to preview the solution to threads</p> 
+  </div>
+</div>';
+      } 
+
+
+
+
  ?>
 
 <!-- form for answer ends here -->

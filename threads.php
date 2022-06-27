@@ -44,10 +44,12 @@ while($row=mysqli_fetch_assoc($result))
 <!-- category information ended -->
 
     <!-- form for asking question start here-->
-    <div class="container">
+   <?php
+   if(isset($_SESSION['loggedin']) && ($_SESSION['loggedin'])==true )
+   {echo '<div class="container">
 
-        <h1 class="text-center my-3">Start the Discussion :p</h1>
-        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+  <h1 class="text-center my-3">Start the Discussion :p</h1>
+        <form action="'.$_SERVER['REQUEST_URI'].'" method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Type Your Problem Here</label>
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
@@ -59,11 +61,18 @@ while($row=mysqli_fetch_assoc($result))
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
-    </div>
-    <!-- form for asking question ends here -->
+    </div>';
+   }
+   else{
+    echo '   <h2 class="text-center my-2 " style="color:red">You are not logged in</h2>
+    <p class="text-center">log in to enter the threads</p>';
+   }
 
+   
+   ?>
+    <!-- form for asking question ends here -->
 <!-- questions/threads asked by users start here -->
-    <div class="container my-3">
+    <div class="container my-5">
         <h3 class="text-center">Browse Question</h3>
 
 
@@ -97,6 +106,7 @@ $id=$_GET['catid'];
 $sql="SELECT * FROM `threads` WHERE `thread_cat_id`='$id'";
 $result=mysqli_query($conn,$sql);
 $rowcount=mysqli_num_rows($result);
+$number=1;
 if($rowcount!=0){
 while($row=mysqli_fetch_assoc($result))
 {   
@@ -104,6 +114,10 @@ while($row=mysqli_fetch_assoc($result))
     $title=$row['thread_title'];
     $desc=$row['thread_desc'];
     $date=$row['timestamp'];
+    $userid=$row['thread_user_id'];
+    $sql2="SELECT `username` FROM `users` WHERE `sno`='$userid'";
+       $result2=mysqli_query($conn,$sql2);
+       $row2=mysqli_fetch_assoc($result2); 
 
 
   echo '<div class="d-flex">
@@ -112,7 +126,8 @@ while($row=mysqli_fetch_assoc($result))
     </div>
     <div class="flex-grow-1 ms-3">
         <h5><a href="threadlist.php?cat_id='.$i_d.'" class="text-dark">'.$title.'</a></h5>
-        <p>'.$desc.'</p>
+        < class="my-0">'.$desc.'<b>'.$row2['username'].'</b></p>
+
     </div>
 </div>';
 }
@@ -123,7 +138,6 @@ else{
 }
  ?>
 <!-- questions/threads asked by the users end here -->
-
 
 
 

@@ -14,9 +14,14 @@ border-radius: 40px;
 /* .modal-title{
     align-items: center;
     text-align: center;
-} */
-.rf{
+}*/
+.r1{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    justify-items: auto;
+
+
+}
+body{
+    background-color: aquamarine;
 }

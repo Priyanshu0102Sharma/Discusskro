@@ -10,6 +10,7 @@ if($method=="POST")
     $email=$_POST['email'];
     $password=$_POST['password'];
     $cpassword=$_POST['cpassword'];
+    $username=$_POST['username'];
     $exist="true";
     $existquerry="SELECT * FROM users where user_email='$email'";
     $result=mysqli_query($conn,$existquerry);
@@ -30,7 +31,7 @@ if($method=="POST")
     if(($password==$cpassword)&& $exist=="true")
     {
         $hash=password_hash($password,PASSWORD_DEFAULT);
-        $sql="INSERT INTO `users` (`user_email`, `user_password`, `timestamp`) VALUES ('$email', '$hash', current_timestamp());";
+        $sql="INSERT INTO `users` (`user_email`, `user_password`,`username`, `timestamp`) VALUES ('$email', '$hash','$username', current_timestamp());";
         $result=mysqli_query($conn,$sql);
         echo var_dump($result);
         if($result)

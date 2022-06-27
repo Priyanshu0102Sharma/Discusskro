@@ -16,8 +16,8 @@
             <div class="modal-body">
                 <form action="/forum/partials/_loginhandling.php" method="POST">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1" class="form-label">User name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">
                         
                     </div>
                     <div class="mb-3">

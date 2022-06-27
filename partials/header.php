@@ -43,7 +43,7 @@ echo
   
   
       if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
-      echo' <p class="text-light my-0 mx-2">';echo "Welcome". $_SESSION['useremail']; echo '</p>'; 
+      echo' <p class="text-light my-0 mx-2">';echo "Welcome ". $_SESSION['username']; echo '</p>'; 
        echo ' <a href="partials/_logouthandling.php" class="btn btn-outline-warning">Logout</a>';
       }
       else{
@@ -64,7 +64,7 @@ echo
 
 require "_signupmodal.php";
 include "_loginmodal.php";
-echo var_dump(isset($_SESSION['loggedin']));
+// echo var_dump(isset($_SESSION['loggedin']));
 if($_GET['signupsuccess'] && $_GET ['signupsuccess']=="true")
 {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
