@@ -15,9 +15,8 @@ if($method=="POST")
             $row=mysqli_fetch_assoc($result);
             if(password_verify($pass,$row['user_password']));
             {
-                // echo "You have logged in";
                 session_start();
-                // echo "you have logged in";
+            //   echo var_dump(password_verify($pass,$row['user_password']));
                 $_SESSION['loggedin']=true;
                 $_SESSION['useremail']=$email;
                 header("Location: /forum/index.php");
@@ -25,12 +24,17 @@ if($method=="POST")
             }
             if(!password_verify($pass,$row['user_password']))
             {
-                echo "you have typed wrong password";
+                // echo '<script type="text/javascript">
+                // <script>$("#loginModal").modal()</script>
+                // </script>';
             }
         }
         else
         {
-            echo "Enter Wrong Email id";
+           
+            // echo '<script type="text/javascript">
+            // <script>$("#loginModal").modal()</script>
+            // </script>';
         }
 }
 

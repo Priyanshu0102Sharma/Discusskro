@@ -1,6 +1,6 @@
 <?php
 
-
+   session_start();
 
 echo 
 '<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -40,7 +40,8 @@ echo
         <button class="btn btn-success " type="submit">Search</button>
       </form>';
 
-      session_start();
+  
+  
       if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
       echo' <p class="text-light my-0 mx-2">';echo "Welcome". $_SESSION['useremail']; echo '</p>'; 
        echo ' <a href="partials/_logouthandling.php" class="btn btn-outline-warning">Logout</a>';
@@ -63,7 +64,7 @@ echo
 
 require "_signupmodal.php";
 include "_loginmodal.php";
-
+echo var_dump(isset($_SESSION['loggedin']));
 if($_GET['signupsuccess'] && $_GET ['signupsuccess']=="true")
 {
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
