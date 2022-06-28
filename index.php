@@ -11,16 +11,19 @@
 
     <!-- css link -->
     <link rel="stylesheet" href="/styles/style.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+</style>
 
     <title>DiscussKro-Coding Forum</title>
 
 </head>
 
 <body>
+    <?php require "partials/_dbconnect.php" ?>
     <!-- navbar start -->
     <?php require "partials/header.php" ?>
     <!-- navbar ends -->
-    <?php require "partials/_dbconnect.php" ?>
 
     <!-- caurseal start here -->
 
@@ -53,14 +56,14 @@
     </div>
 
     <!-- caurseal end here -->
-    <div class="container text-center my-3 ">
-        <h2>DiscussKro- Categories</h2>
+    <div class="container text-center my-3 acc ">
+        <h2 style="font-family: 'Titan One', cursive;">DiscussKro- Categories</h2>
 
         <div class="r1">
             <!-- for loop dwara iterate krenge -->
             <?php
 
-$imgarray=array("python.png","js.jpg","php.png","cpp.avif","node-js.png","java.webp");
+$imgarray=array("python1.png","js.jpg","php.jpg","cpp.avif","node-js.png","java.webp","react.png","ruby.webp");
 $i=0;
 
 $sql="SELECT * FROM `category`";
@@ -70,7 +73,7 @@ while($row=mysqli_fetch_assoc($result))
     $col= $row['category_name'];
     $col_desc=$row['category_description'];
 echo 
-    '<div class="coln">
+    '<div class="coln my-2">
     <div class="card" style="width: 18rem;">
   <img src="./images/'.$imgarray[$i].'" class="card-img-top" alt="..." height="250">
   <div class="card-body">
