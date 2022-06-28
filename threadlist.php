@@ -7,10 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
   <body>
+    <?php require "partials/_dbconnect.php" ?>
  <!-- navbar start -->
  <?php require "partials/header.php" ?>
     <!-- navbar ends -->
-    <?php require "partials/_dbconnect.php" ?>
 
     <!-- division for jumbotron like structure-->
     
@@ -39,19 +39,21 @@ while($row=mysqli_fetch_assoc($result))
   <h1>Discussion</h1>
 
 <!-- form for answer start here -->
-
-<div class="container">
+<?php
+echo '<div class="container">
 
        
-        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+        <form action="'. $_SERVER["REQUEST_URI"] .'" method="POST">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Solution for the Problem</label>
                 <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+                <input type="hidden" name="sno" value="'. $_SESSION['sno'].'">
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
-    </div>
 
+    </div>'
+?>
 
 
 <!-- adding solutions -->
@@ -61,7 +63,10 @@ $insertion=false;
 if($method=='POST')
 {
   $th_content=$_POST['content'];
-  $sql="INSERT INTO `comments` (`comment_content`, `thread_id`, `user_id`, `comment_date`) VALUES ('$th_content', '$id', '0', current_timestamp());";
+  $sno=$_POST['sno'];
+  $th_content=str_replace("<","&lt",$th_content);
+  $th_content=str_replace(">","&gt",$th_content);
+  $sql="INSERT INTO `comments` (`comment_content`, `thread_id`, `user_id`, `comment_date`) VALUES ('$th_content', '$id', '$sno', current_timestamp());";
   $result=mysqli_query($conn,$sql);
 
 
@@ -84,15 +89,17 @@ while($row=mysqli_fetch_assoc($result))
       $content=$row['comment_content'];
       $userid=$row['user_id'];
       $i_d=$row['comment_content'];
-
-
+      $comment_id=$row['comment_id'];
+      $sql2="SELECT `username` FROM `users` WHERE `sno`='$comment_id'";
+      $result2=mysqli_query($conn,$sql2);
+      $row2=mysqli_fetch_assoc($result2); 
 
   echo '<div class="d-flex">
     <div class="flex-shrink-0">
         <img src="images/userdefault.png" width="40px" alt="Sample Image">
     </div>
     <div class="flex-grow-1 ms-3">
-        <p>'.$content.'</p>
+        <p>'.$content.'- <b>'.$row2['username'].'</b></p>
     </div>
 </div>';
 }

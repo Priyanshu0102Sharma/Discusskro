@@ -1,27 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
 
-/* body{
-    background-color: rgb(21, 8, 52);
-}
-h2,h3,h1{
-    color: azure;
-} */
 .modal-content{
 background-color: rgb(247, 245, 216);
 border: 8px solid rgb(199, 144, 50);
 border-radius: 40px;
 }
-/* .modal-title{
-    align-items: center;
-    text-align: center;
-}*/
 .r1{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 
-
 }
-body{
-    background-color: aquamarine;
+.acc h2{
+    font-family: 'Titan One', cursive;
 }

@@ -10,12 +10,12 @@
 </head>
 
 <body>
+    <!-- database connect here -->
+    <?php require "partials/_dbconnect.php" ?>
     <!-- navbar start -->
     <?php require "partials/header.php" ?>
     <!-- navbar ends -->
 
-    <!-- database connect here -->
-    <?php require "partials/_dbconnect.php" ?>
 
 
 
@@ -58,6 +58,7 @@ while($row=mysqli_fetch_assoc($result))
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Elaborate your Problem</label>
                 <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                <input type="hidden" name="sno" value="'.$_SESSION['sno'].'">
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
@@ -84,10 +85,15 @@ while($row=mysqli_fetch_assoc($result))
 $method=$_SERVER['REQUEST_METHOD'];
 $insertion=false;
 if($method=='POST')
-{
+{$sno=$_POST['sno'];
+    echo $sno;
   $th_title=$_POST['title'];
   $th_desc=$_POST['description'];
-  $sql="INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";
+  $th_title=str_replace("<","&lt",$th_title);
+  $th_title=str_replace(">","&gt",$th_title);
+  $th_desc=str_replace("<","&lt",$th_desc);
+  $th_desc=str_replace(">","&gt",$th_desc);
+  $sql="INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp());";
   $result=mysqli_query($conn,$sql);
 
 
@@ -126,7 +132,7 @@ while($row=mysqli_fetch_assoc($result))
     </div>
     <div class="flex-grow-1 ms-3">
         <h5><a href="threadlist.php?cat_id='.$i_d.'" class="text-dark">'.$title.'</a></h5>
-        < class="my-0">'.$desc.'<b>'.$row2['username'].'</b></p>
+        <p class="my-0"> '.$desc.'- <b>'.$row2['username'].'</b></p>
 
     </div>
 </div>';

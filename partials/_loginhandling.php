@@ -20,6 +20,7 @@ if($method=="POST")
             //   echo var_dump(password_verify($pass,$row['user_password']));
                 $_SESSION['loggedin']=true;
                 $_SESSION['username']=$username;
+                $_SESSION['sno']=$row['sno'];
                 header("Location: /forum/index.php");
                 // exit;
             }
