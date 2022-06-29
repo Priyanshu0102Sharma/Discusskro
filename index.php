@@ -14,8 +14,18 @@
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 </style>
-<link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon">
+
+
+
+<link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon" >
     <title>DiscussKro-Coding Forum</title>
+
+    <style>
+    *, ::before {
+    box-sizing: border-box;
+    margin: auto;
+}
+</style>
 
 </head>
 
@@ -61,10 +71,15 @@
 
         <div class="r1">
             <!-- for loop dwara iterate krenge -->
-            <?php
 
-$imgarray=array("python1.png","js.jpg","php.jpg","cpp.avif","node-js.png","java.webp","react.png","ruby.webp");
+
+
+<?php
+
+$imgarray=array("python1.png","js.jpg","php.jpg","cpp.avif","njs.png","java.webp","react.avif","ruby.webp");
 $i=0;
+
+
 
 $sql="SELECT * FROM `category`";
 $result=mysqli_query($conn,$sql);
@@ -73,18 +88,22 @@ while($row=mysqli_fetch_assoc($result))
     $col= $row['category_name'];
     $col_desc=$row['category_description'];
 echo 
-    '<div class="coln my-3">
-    <div class="card" style="width: 18rem;">
+    '<div class="coln my-5">
+    <div class="card" style="width: 18rem; box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+    
   <img src="./images/'.$imgarray[$i].'" class="card-img-top" alt="..." height="250">
   <div class="card-body">
-    <h5 class="card-title">'. $col .'</h5>
+  <div class="cr mx-auto">  
+  <h5 class="card-title">'. $col .'</h5>
     <p class="card-text">'. substr($col_desc,0,50) .'....'.'</p>
     <a href="threads.php?catid='. $id.'" class="btn btn-dark">View Threads</a>
   </div>
 </div>
+</div>
     </div>';
 ++$i;
 }
+
 
 ?>
 
