@@ -94,7 +94,6 @@ $method=$_SERVER['REQUEST_METHOD'];
 $insertion=false;
 if($method=='POST')
 {$sno=$_POST['sno'];
-    echo $sno;
   $th_title=$_POST['title'];
   $th_desc=$_POST['description'];
   $th_title=str_replace("<","&lt",$th_title);
