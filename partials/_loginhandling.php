@@ -1,11 +1,10 @@
 <?php
-
+$exist="false";
 $method=$_SERVER['REQUEST_METHOD'];
 // echo $method;
 if($method=="POST")
 {
         require '_dbconnect.php';
-        $email=$_POST['email'];
         $username=$_POST['username'];
         $pass=$_POST['password'];
         $sql="select * from users where username='$username'";
@@ -17,26 +16,30 @@ if($method=="POST")
             if(password_verify($pass,$row['user_password']));
             {
                 session_start();
-            //   echo var_dump(password_verify($pass,$row['user_password']));
+              $a= password_verify($pass,$row['user_password']);
+              if($a==false)
+              {
+                $exist="false";
+             }
+              else
+              {
+                $exist="true";
                 $_SESSION['loggedin']=true;
                 $_SESSION['username']=$username;
                 $_SESSION['sno']=$row['sno'];
-                header("Location: /forum/index.php");
-                // exit;
+                header("Location: /forum/index.php?loginsuccess=$exist");
+              }
+             
+
             }
             if(!password_verify($pass,$row['user_password']))
             {
-                // echo '<script type="text/javascript">
-                // <script>$("#loginModal").modal()</script>
-                // </script>';
+                header("Location: /forum/index.php?loginsuccess=$exist");
             }
         }
         else
         {
-           
-            // echo '<script type="text/javascript">
-            // <script>$("#loginModal").modal()</script>
-            // </script>';
+            header("Location: /forum/index.php?loginsuccess=$exist");
         }
 }
 

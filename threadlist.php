@@ -11,8 +11,7 @@
     box-sizing: border-box;
     margin: auto;
 }
-</style>
- 
+</style> 
   </head>
   <body>
     <?php require "partials/_dbconnect.php" ?>
@@ -121,7 +120,7 @@ else{
       {echo'
         <div class="container mt-3">
   <h2>You are not logged in!!</h2>
-  <div class="mt-4 p-5 bg-primary text-white rounded">
+  <div class="mt-4 p-5 bg-dark text-white rounded">
     <h1>Log in to see the solution</h1> 
     <p>It seems you are not logged in. Log in to preview the solution to threads</p> 
   </div>

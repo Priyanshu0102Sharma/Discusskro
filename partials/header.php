@@ -1,11 +1,12 @@
 <?php
 
-   session_start();
+  session_start();
+
 
 echo 
 '<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">DiscussKro</a>
+    <a class="navbar-brand mx-0 my-0" href="#">DiscussKro</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,16 +47,17 @@ echo
   
   
       if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
-      echo' <p class="text-light my-0 mx-2">'; 
+        echo'<div class="loginbtns d-flex justify-content-center">';
+        echo' <p class="text-light my-2 mx-2 ">'; 
        echo ' <a href="partials/_logouthandling.php" class="btn btn-outline-warning mx-3">Logout</a>';
-       echo "Welcome ". $_SESSION['username']; echo '</p>';
+       echo "Welcome ". $_SESSION['username']; echo '</p></div>';
       }
       else{
     
 
-      echo'<div class="loginbtns">
+      echo'<div class="loginbtns d-flex justify-content-center">
         <button class="btn btn-outline-warning mx-2 " data-bs-toggle="modal" data-bs-target="#loginModal" >Login</button>
-        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#signupModal" >SignUp</button>';
+        <button class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#signupModal" >SignUp</button>';
       }
       echo '
       </div>
@@ -80,6 +82,21 @@ if(isset($_GET['signupsuccess']) && $_GET['signupsuccess']=="false")
 {
   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>Failure!</strong> You were not able to signup because either you have taken repeated email id or password didn\'t match !!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+if(isset($_GET['loginsuccess']) && $_GET ['loginsuccess']=="false")
+{
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Failure!</strong> You were not able to login because password didn\'t match !!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+if(isset($_GET['loginsuccess']) && $_GET ['loginsuccess']=="true")
+
+{
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> You have logged in!!
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 }
