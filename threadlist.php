@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Threads-DiscussKro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
  
     <style>
@@ -40,7 +40,6 @@ while($row=mysqli_fetch_assoc($result))
   <div class="mt-4 p-5 bg-dark text-white rounded">
     <h1><?php echo $title ?></h1> 
     <p><?php echo $desc?></p> 
-    <p><b>Post By-Priyanshu</b></p>
   </div>
 
   <h1>Discussion</h1>
