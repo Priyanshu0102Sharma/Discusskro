@@ -18,7 +18,7 @@
 
 
 <link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon" >
-    <title>DiscussKro-Coding Forum</title>
+    <title>DiscussKro - Coding Forum</title>
 
     <style>
     *, ::before {
